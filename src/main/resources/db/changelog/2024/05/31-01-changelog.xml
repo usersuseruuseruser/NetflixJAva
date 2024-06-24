@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717131818041-1" author="ilnur (generated)">
+        <createTable tableName="comment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_comment"/>
+            </column>
+            <column name="review_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="text" type="VARCHAR(255)"/>
+            <column name="written_at" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-2" author="ilnur (generated)">
+        <createTable tableName="content_types">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_content_types"/>
+            </column>
+            <column name="content_type_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-3" author="ilnur (generated)">
+        <createTable tableName="genre">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_genre"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-4" author="ilnur (generated)">
+        <createTable tableName="movies">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies"/>
+            </column>
+            <column name="name" type="VARCHAR(128)"/>
+            <column name="description" type="VARCHAR(1568)"/>
+            <column name="slogan" type="VARCHAR(255)"/>
+            <column name="poster_url" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="release_date" type="DATE"/>
+            <column name="content_type_id" type="BIGINT"/>
+            <column name="ratings_id" type="BIGINT"/>
+            <column name="trailer_info_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-5" author="ilnur (generated)">
+        <createTable tableName="movies_allowed_subscriptions">
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_allowedsubscriptions"/>
+            </column>
+            <column name="allowed_subscriptions_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_allowedsubscriptions"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-6" author="ilnur (generated)">
+        <createTable tableName="movies_genres">
+            <column name="genres_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_genres"/>
+            </column>
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_genres"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-7" author="ilnur (generated)">
+        <createTable tableName="movies_reviews">
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_reviews"/>
+            </column>
+            <column name="reviews_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_reviews"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-8" author="ilnur (generated)">
+        <createTable tableName="ratings">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_ratings"/>
+            </column>
+            <column name="kinopoisk_rating" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="imdb_rating" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="local_rating" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-9" author="ilnur (generated)">
+        <createTable tableName="refresh_token">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_refreshtoken"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="token" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-10" author="ilnur (generated)">
+        <createTable tableName="reviews">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_reviews"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="movie_id" type="BIGINT"/>
+            <column name="text" type="VARCHAR(255)"/>
+            <column name="is_positive" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="score" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="written_at" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-11" author="ilnur (generated)">
+        <createTable tableName="reviews_likes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_reviews_likes"/>
+            </column>
+            <column name="review_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-12" author="ilnur (generated)">
+        <createTable tableName="subscription">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_subscription"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="price" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-13" author="ilnur (generated)">
+        <createTable tableName="subscription_movies">
+            <column name="subscription_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_subscription_movies"/>
+            </column>
+            <column name="movies_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_subscription_movies"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-14" author="ilnur (generated)">
+        <createTable tableName="trailer_info">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_trailerinfo"/>
+            </column>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-15" author="ilnur (generated)">
+        <createTable tableName="user_role">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-16" author="ilnur (generated)">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(128)"/>
+            <column name="profile_picture_url" type="VARCHAR(512)"/>
+            <column name="password" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="verification_code" type="VARCHAR(512)"/>
+            <column name="enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717131818041-17" author="ilnur (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_movies_name" tableName="movies"/>
+    </changeSet>
+    <changeSet id="1717131818041-18" author="ilnur (generated)">
+        <addUniqueConstraint columnNames="reviews_id" constraintName="uc_movies_reviews_reviews"
+                             tableName="movies_reviews"/>
+    </changeSet>
+    <changeSet id="1717131818041-19" author="ilnur (generated)">
+        <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users"/>
+    </changeSet>
+    <changeSet id="1717131818041-20" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="review_id" baseTableName="comment"
+                                 constraintName="FK_COMMENT_ON_REVIEW" referencedColumnNames="id"
+                                 referencedTableName="reviews"/>
+    </changeSet>
+    <changeSet id="1717131818041-21" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="comment" constraintName="FK_COMMENT_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1717131818041-22" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="content_type_id" baseTableName="movies"
+                                 constraintName="FK_MOVIES_ON_CONTENTTYPE" referencedColumnNames="id"
+                                 referencedTableName="content_types"/>
+    </changeSet>
+    <changeSet id="1717131818041-23" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="ratings_id" baseTableName="movies"
+                                 constraintName="FK_MOVIES_ON_RATINGS" referencedColumnNames="id"
+                                 referencedTableName="ratings"/>
+    </changeSet>
+    <changeSet id="1717131818041-24" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="trailer_info_id" baseTableName="movies"
+                                 constraintName="FK_MOVIES_ON_TRAILERINFO" referencedColumnNames="id"
+                                 referencedTableName="trailer_info"/>
+    </changeSet>
+    <changeSet id="1717131818041-25" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="refresh_token"
+                                 constraintName="FK_REFRESHTOKEN_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1717131818041-26" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="reviews" constraintName="FK_REVIEWS_ON_MOVIE"
+                                 referencedColumnNames="id" referencedTableName="movies"/>
+    </changeSet>
+    <changeSet id="1717131818041-27" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="reviews" constraintName="FK_REVIEWS_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1717131818041-28" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="movies_allowed_subscriptions"
+                                 constraintName="fk_movallsub_on_movie" referencedColumnNames="id"
+                                 referencedTableName="movies"/>
+    </changeSet>
+    <changeSet id="1717131818041-29" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="allowed_subscriptions_id" baseTableName="movies_allowed_subscriptions"
+                                 constraintName="fk_movallsub_on_subscription" referencedColumnNames="id"
+                                 referencedTableName="subscription"/>
+    </changeSet>
+    <changeSet id="1717131818041-30" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="genres_id" baseTableName="movies_genres"
+                                 constraintName="fk_movgen_on_genre" referencedColumnNames="id"
+                                 referencedTableName="genre"/>
+    </changeSet>
+    <changeSet id="1717131818041-31" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="movies_genres"
+                                 constraintName="fk_movgen_on_movie" referencedColumnNames="id"
+                                 referencedTableName="movies"/>
+    </changeSet>
+    <changeSet id="1717131818041-32" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="movies_reviews"
+                                 constraintName="fk_movrev_on_movie" referencedColumnNames="id"
+                                 referencedTableName="movies"/>
+    </changeSet>
+    <changeSet id="1717131818041-33" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="reviews_id" baseTableName="movies_reviews"
+                                 constraintName="fk_movrev_on_review" referencedColumnNames="id"
+                                 referencedTableName="reviews"/>
+    </changeSet>
+    <changeSet id="1717131818041-34" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="movies_id" baseTableName="subscription_movies"
+                                 constraintName="fk_submov_on_movie" referencedColumnNames="id"
+                                 referencedTableName="movies"/>
+    </changeSet>
+    <changeSet id="1717131818041-35" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="subscription_id" baseTableName="subscription_movies"
+                                 constraintName="fk_submov_on_subscription" referencedColumnNames="id"
+                                 referencedTableName="subscription"/>
+    </changeSet>
+    <changeSet id="1717131818041-36" author="ilnur (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role"
+                                 constraintName="fk_user_role_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>
